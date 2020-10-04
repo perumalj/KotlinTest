@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dataModel"
+            type="com.app.assignment.myapplication.articles.model.response.ArticlesResponseModel" />
+
+        <variable
+            name="dataModelMedia"
+            type="com.app.assignment.myapplication.articles.model.response.ArticlesResponseModel.MediaListItem" />
+
+        <variable
+            name="dataModelUser"
+            type="com.app.assignment.myapplication.articles.model.response.ArticlesResponseModel.UserListItem" />
+
+        <variable
+            name="userImage"
+            type="String" />
+
+        <variable
+            name="articleImage"
+            type="String" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/lytParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardElevation="@dimen/_5sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            >
+
+          <!--  <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+               android:src="@drawable/download"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"
+                />-->
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="2sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:image="@{userImage}" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_userName"
+                style="@style/LabelTextBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:gravity="start"
+                android:singleLine="true"
+                android:text="@{dataModelUser.name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_user"
+                app:layout_constraintTop_toTopOf="@+id/img_user"
+                tools:text="User Name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_userDesignation"
+                style="@style/LabelTextDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:singleLine="true"
+                android:text="@{dataModelUser.designation}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_user"
+                app:layout_constraintTop_toBottomOf="@+id/txt_userName"
+                tools:text="User Designation" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_15sdp"
+                style="@style/LabelText"
+                android:text="1 min"
+                android:textSize="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_userName"
+                tools:text="1 min" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_article"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="@{dataModelMedia.image.length() == 0 ? View.INVISIBLE : View.VISIBLE, default=visible}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_user"
+                app:shapeAppearance="@style/ImageShapeAppearance"
+                bind:image="@{articleImage}"
+                tools:srcCompat="@drawable/ic_profile" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_articleDescription"
+                style="@style/LabelTextDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@{dataModel.content}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_article"
+                tools:text="User Designation User Designation User Designation User Designation User Designation User Designation User Designation User Designation User Designation" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_articleTtile"
+                style="@style/LabelTextDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="@{dataModelMedia.title.length() == 0 ? View.INVISIBLE : View.VISIBLE, default=visible}"
+                android:text="@{dataModelMedia.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_articleDescription"
+                tools:text="User Designation" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_articleUrl"
+                style="@style/LabelTextDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@{dataModelMedia.url}"
+                android:visibility="@{dataModelMedia.url.length() == 0 ? View.INVISIBLE : View.VISIBLE, default=gone}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_articleTtile"
+                tools:text="User Designation" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ly_likes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_articleUrl">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_like_count"
+                    style="@style/LabelTextBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_like"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="45K" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_like"
+                    style="@style/LabelTextBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:text="@string/lbl_likes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txt_like_count"
+                    app:layout_constraintTop_toTopOf="@+id/txt_like_count" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ly_comments"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ly_likes">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_comments_count"
+                    style="@style/LabelTextBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_comments"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="45K" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_comments"
+                    style="@style/LabelTextBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:text="@string/lbl_comments"
+                    app:layout_constraintStart_toEndOf="@+id/txt_comments_count"
+                    app:layout_constraintTop_toTopOf="@+id/txt_comments_count" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

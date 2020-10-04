@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0E312B</color>
+    <color name="colorPrimaryDark">#0E312B</color>
+    <color name="colorAccent">#0E312B</color>
+
+    <color name="colorDarkGreen">#0E312B</color>
+
+    <color name="icon_active">#CEA287</color>
+    <color name="textColorDark">#0E312B</color>
+
+    <color name="green_button">#0E312B</color>
+    <color name="gray_button">#F0F1F1</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="bg_gray">#F0F1F1</color>
+
+    <color name="grey">#E7E8E8</color>
+    <color name="hintTextColor">#b4b4b4</color>
+
+    <color name="color_82928D">#82928D</color>
+    <color name="grey_selected">#82928D</color>
+    <color name="color_C0C7C5">#C0C7C5</color>
+
+    <color name="colorOverlay">#1A000000</color>
+
+    <color name="bg_delete">#B47C58</color>
+    <color name="textColor_light_green">#800E312B</color>
+    <color name="colorB47C58">#B47C58</color>
+
+    <color name="alerter_default_success_background">#4CAF50</color>
+    <color name="alert_default_error_background">#F44336</color>
+    <color name="alert_default_text_color">#0E312B</color>
+    <color name="alert_default_icon_color">@android:color/white</color>
+    <color name="transDarkGreen">#4D0E312B</color>
+    <color name="color_4DFFFFFF">#FFFFFF</color>
+    <color name="transGrey">#99E7E8E8</color>
+    <color name="colorDarkGreen_60">#990E312B</color>
+
+    <color name="transparent">#80000000</color>
+
+</resources>
