@@ -10,7 +10,6 @@ import com.app.assignment.myapplication.databinding.AdapterArticlesItemsBinding
 
 class ArticleAdapter(
    private val articleList: List<ArticlesResponseModel>
-
 ) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     private var context: Context? = null
@@ -34,20 +33,19 @@ class ArticleAdapter(
     //this method is binding the data on the list
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+        // Adding data from arraylist to data model
         val reviewInfo = articleList[position]
           holder.binding.dataModel = reviewInfo
         holder.binding.dataModelUser = reviewInfo.user?.get(0)
         holder.binding.dataModelMedia = reviewInfo.media?.get(0)
 
+        // Adding image from arraylist and assigning the image to bind view by data binding method
         holder.binding.userImage = reviewInfo.user?.get(0)?.avatar
         holder.binding.articleImage = reviewInfo.media?.get(0)?.image
 
         holder.binding.txtCommentsCount.text = reviewInfo.comments.toString()
         holder.binding.txtLikeCount.text = reviewInfo.likes.toString()
 
-// holder.binding.txtUserName.text = reviewInfo.user?.get(0)?.name + " "+ reviewInfo.user?.get(0)?.lastname
-
-     // holder.binding.image =  productReviewList[position].image
 
     }
 

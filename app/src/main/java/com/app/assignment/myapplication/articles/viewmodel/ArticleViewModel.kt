@@ -18,8 +18,9 @@ class ArticleViewModel() : ViewModelBase() {
     init {
         articleList = ArrayList()
     }
-
+    // API call method
     fun loadJSON(rvArticles: RecyclerView) {
+
         val retrofit = Retrofit.Builder().baseUrl("  https://5e99a9b1bc561b0016af3540.mockapi.io/")
             .addConverterFactory(GsonConverterFactory.create()).build()
         val requestInterface: RequestInterface = retrofit.create(
@@ -31,7 +32,6 @@ class ArticleViewModel() : ViewModelBase() {
                 call: Call<MutableList<ArticlesResponseModel?>?>,
                 response: retrofit2.Response<MutableList<ArticlesResponseModel?>?>
             ) {
-                // Utils.showSnackBar(response.toString(), getDataBinding().rvArticles)
                 var articlesResponseModel = ArticlesResponseModel()
                 for (position in response.body()!!.indices) {
                     articlesResponseModel = response.body()!![position]!!

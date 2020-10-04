@@ -28,12 +28,11 @@ class ArticleFragment : FragmentBase<ArticleViewModel, FragmentArticlesBinding>(
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         getDataBinding().viewModel = articleViewModel
-       // articleViewModel?.setRepo(ArticleRepository(activity as ActivityBase<*>, articleViewModel))
     }
 
     override fun initializeScreenVariables() {
+        // API call method
         articleViewModel?.loadJSON(getDataBinding().rvArticles)
 
     }
