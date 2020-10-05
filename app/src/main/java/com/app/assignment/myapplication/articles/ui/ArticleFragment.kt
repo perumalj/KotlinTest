@@ -33,7 +33,7 @@ class ArticleFragment : FragmentBase<ArticleViewModel, FragmentArticlesBinding>(
 
     override fun initializeScreenVariables() {
         // API call method
-        articleViewModel?.loadJSON(getDataBinding().rvArticles)
+        articleViewModel?.loadJSON(getDataBinding().rvArticles,getDataBinding().txtNoDataFound)
 
     }
 
